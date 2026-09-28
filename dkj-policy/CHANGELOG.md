@@ -1,33 +1,31 @@
 # Changelog
 
-De geschiedenis van de DJ Cylow-website: elke gemergde branch met zijn pull request, nieuwste
-bovenaan, onder één `## [Unreleased]`-kop — **elke `###`-kop daaronder is één wijziging**, en dat is
-wat de gedeelde workflow-scripts lezen. Het mechanisme (het entry-bestand
-`development-cycle.md`, folden, een release knippen) staat in [`CLAUDE.md`](../CLAUDE.md).
-
-> Tot 2026-08-27 stond hier geen `## [Unreleased]`-kop en droeg elke wijziging zelf een `##`-kop, één
-> niveau hoger. Plugin v4.20.0 (25-26 augustus 2026) voerde de kop in en verdiepte elk niveau in een
-> entry met één: de entry-kop werd `###`, de zes genoemde secties erin `####`, en de tier-subkoppen
-> `#####`. Oudere entries elders in de repo-geschiedenis (in `releases/changelog/`, tot 2026-08-27 `releases/development/` op de repo-root) zijn niet
-> herschreven — dat is een record, geen vertaling.
-
-**`origin/main` is de live site.** Netlify bouwt en publiceert bij elke push naar `main`, en een
-PR-merge schrijft daar rechtstreeks in. Alles hieronder staat dus al op `djcylow.com` — live, maar
-nog zonder versienummer. Een release is een label op wat al draait.
-
-**De uitgebrachte versies staan niet hier maar in
-[`dkj-policy/releases/history.md`](releases/history.md)**, met
-datum, type en een samenvattende regel per versie. Dit bestand houdt alleen wat nog géén
-versienummer heeft; een release-cut haalt die entries eruit en laat deze intro achter.
-
-> Tot 2026-07-26 stond hier het omgekeerde, met een `← LIVE`-markering die zou aanwijzen welke versie
-> draaide. Dat model was onjuist en de markering stond maandenlang fout — op v2.20.1, terwijl
-> v2.20.2, v2.21.0 en vijf PR's al live waren. De markering is vervallen: de bovenste uitgebrachte
-> versie draait per definitie al.
-
 ## [Unreleased]
 
-**1 / 5 minor entries** <!-- pending-tally -->
+**1 / 6 minor entries** <!-- pending-tally -->
+
+### DEPLOY: config/schone-lei · 20260928-132419Z
+
+De oude, repo-eigen Claude-werkwijze is weg: `CLAUDE.md` bevat alleen nog de import van de
+dkj-policy-grondwet, `.claude/` alleen de plugin-instellingen, en de root-`README.md` is verwijderd.
+De release-historie is bewaard en staat nu in `dkj-policy/`, met het overzicht als
+[`releases/history.md`](releases/history.md), zoals bij de andere consumers. De site zelf verandert niet.
+
+**Score:** 4
+
+#### What makes this deploy extra special
+
+N/A: dit raakt alleen hoe er aan de repo gewerkt wordt; `djcylow.com` levert dezelfde pagina's.
+
+**Score:** N/A
+
+#### Pull Request
+
+Schone lei: oude werkwijze weg, plugins opnieuw geïnstalleerd, release-historie naar dkj-policy/
+
+[PR #170](https://github.com/DaveKJohn/djcylow-react/pull/170)
+
+---
 
 ### DEPLOY: config/1769-marketplace-hernoemen · 20260910-222602
 
