@@ -2,7 +2,27 @@
 
 ## [Unreleased]
 
-**1 / 9 minor entries** <!-- pending-tally -->
+**1 / 10 minor entries** <!-- pending-tally -->
+
+### DEPLOY: config/permissies-workflowscripts · 20260928-140321Z
+
+Routinematig `git`-werk (status, diff, log, branch, fetch, pull, add, commit, checkout, merge, push, tag e.d.) en de `gh`-commando's `pr`, `issue`, `run`, `label`, `workflow` en `repo view` vragen niet langer om toestemming, in Bash en in PowerShell. De regels staan in `.claude/settings.json` onder `allow`. De `deny`-lijst gaat voor, dus force-push, `reset --hard`, `rebase` en `rm -rf` blijven geblokkeerd.
+
+**Score:** 2
+
+#### What makes this deploy extra special
+
+N/A -- alleen de werkomgeving van Claude Code verandert; de site niet.
+
+**Score:** N/A
+
+#### Pull Request
+
+git- en gh-routine zonder permissieprompt
+
+[PR #174](https://github.com/DKJ-Solutions/djcylow-react/pull/174)
+
+---
 
 ### DEPLOY: config/repo-naar-dkj-solutions · 20260928-140058Z
 
