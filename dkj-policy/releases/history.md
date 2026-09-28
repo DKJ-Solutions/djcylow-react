@@ -259,7 +259,7 @@ the state is tagged as `vX.Y.Z`. `cut-release.ps1` produces only a git tag, the 
 `development/`, and a reference to them in [`CHANGELOG.md`](../CHANGELOG.md). A release is cut **only on the
 owner's explicit request** and deliberately does **not** go through a branch + PR: like the fold commit, the
 release commit is a permitted direct-on-`main` action (the second exception to "everything via branch + PR"
-— see [`CONTRIBUTING.md`](../CONTRIBUTING.md)).
+— see `CONTRIBUTING.md`).
 
 In one motion, on a clean `main`:
 [`scripts/release/cut-release.ps1`](https://github.com/DaveKJohn/claude-code-specialists/blob/main/scripts/release/cut-release.ps1)`(-Version <X.Y.Z> | -Bump <major|minor|patch>) [-Title "…"]`
@@ -351,7 +351,7 @@ decisions behind them, the measured instances, and the release list itself.
 > translation cannot even be diffed against it. The translation is gone.
 
 **This directory is in English; the rest of the repo is Dutch** (Dave, August 13, 2026). That is a deliberate
-exception to the language rule in [`CLAUDE.md`](../../CLAUDE.md#taal), and it is the price of the mirror: the
+exception to the language rule in `CLAUDE.md`, and it is the price of the mirror: the
 portable half is only portable while it is the source's own text. Everything else stays Dutch — the
 governance docs, `CONTRIBUTING.md`, the changelog entries and the commit messages. So do the release
 documents already written; see [the release list](#the-release-list) for why those are history rather than

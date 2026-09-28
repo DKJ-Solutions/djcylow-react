@@ -16,7 +16,7 @@ PR-merge schrijft daar rechtstreeks in. Alles hieronder staat dus al op `djcylow
 nog zonder versienummer. Een release is een label op wat al draait.
 
 **De uitgebrachte versies staan niet hier maar in
-[`contributing-davekjohn/releases/README.md`](releases/README.md)**, met
+[`dkj-policy/releases/history.md`](releases/history.md)**, met
 datum, type en een samenvattende regel per versie. Dit bestand houdt alleen wat nog géén
 versienummer heeft; een release-cut haalt die entries eruit en laat deze intro achter.
 
