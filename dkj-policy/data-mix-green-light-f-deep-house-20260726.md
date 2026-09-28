@@ -39,23 +39,43 @@
 
 ### PLAN
 
-Cover staat klaar; wacht op de tracklist van Dave voordat de JSON-entry compleet is.
+Nieuwe mix: Deep House, Green Light (f), 128 BPM, 2026-07-26. Site-volume `Vol. 1` (eerste Deep
+House in deze serie), `volume_spotify` 4 (na drie Progressive House-mixes in Green Light (f) 128).
+De mp3 staat op de actieve R2-bucket als `Green_Light_f_EDM_128BPM_20260726_Audio_V1 (Vol. 4).mp3`
+(HEAD-request: 200, audio/mpeg, ~145 MB).
+
+#### Stand bij het openen van de PR
+
+De PR is geopend op verzoek van Dave terwijl de tracklist nog ontbreekt. Deze ronde levert alleen de
+cover. De JSON-entry kan er nog niet in: een live entry zonder tracklist is geen mix, en met
+`ignore: true` breekt hij de preview-tests (precies acht previews, geen datum-`id`). De entry komt
+op deze branch zodra de tracklist er is. Daarna volgen nieuwe stappen hieronder, en dan ook de
+beoordeling door Dave op de lokale pagina voordat er gemerged wordt (zichtbaar resultaat).
 
 ### CREATE
 
-- [ ] TODO: the first step of this branch
+- [x] Cover uit `H:\1) Music Mood Colours\...\20260726 (Vol. 4)\Thumb\Wide` (1920x1080 JPG) omgezet
+      met sharp naar `image_light_green_wide_20260726_large.webp` (1920x1080, q90) en `_small.webp`
+      (480x270, q90) in `public/images/light/green/wide/`
 
 ### TEST
 
+- [x] `npm test` groen: de nieuwe afbeeldingen raken nog geen entry, dus geen test verandert van uitkomst
+
 ### DEPLOY: data/mix-green-light-f-deep-house-20260726
 
-**Score:**
+De cover van de nieuwe Deep House-mix in Green Light (f) van 26 juli 2026 staat in `public/images/`,
+als large (1920x1080) en small (480x270) webp. Nog geen enkele pagina verwijst ernaar; de mix-entry
+volgt zodra de tracklist er is.
+
+**Score:** 1
 
 #### What makes this deploy extra special
 
-**Score:**
+N/A: nog niets zichtbaar op de site; de mix zelf komt pas met de JSON-entry.
+
+**Score:** N/A
 
 #### Pull Request
 
 nieuwe mix: Deep House, Green Light (f), 26 juli 2026
-
