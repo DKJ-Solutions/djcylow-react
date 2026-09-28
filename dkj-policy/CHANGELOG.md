@@ -2,7 +2,30 @@
 
 ## [Unreleased]
 
-**1 / 6 minor entries** <!-- pending-tally -->
+**1 / 7 minor entries** <!-- pending-tally -->
+
+### DEPLOY: config/adopt-config · 20260928-133000Z
+
+De gedeelde workflow-scripts draaien in deze repo nu op antwoorden die hier gekozen zijn, in plaats
+van op fallbacks die niemand koos: de verplichte CI-check (`poort`), de merge-methode, de naam op de
+release-pagina (`DJ Cylow`) en de regel voor wanneer een major mag. Part 3 van de adoptie staat bewust
+uit tot de repo naar DKJ-Solutions verhuist, omdat de runners daar pas bij `FOLD_PUSH_TOKEN` kunnen.
+
+**Score:** 2
+
+#### What makes this deploy extra special
+
+N/A: alleen configuratie van de werkwijze; `djcylow.com` levert dezelfde pagina's.
+
+**Score:** N/A
+
+#### Pull Request
+
+Adoptie Part 2: de configuratie van dkj-policy
+
+[PR #171](https://github.com/DaveKJohn/djcylow-react/pull/171)
+
+---
 
 ### DEPLOY: config/schone-lei · 20260928-132419Z
 
