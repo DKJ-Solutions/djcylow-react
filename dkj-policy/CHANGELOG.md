@@ -2,7 +2,29 @@
 
 ## [Unreleased]
 
-**1 / 10 minor entries** <!-- pending-tally -->
+**2 / 11 minor entries** <!-- pending-tally -->
+
+### DEPLOY: data/mix-green-light-f-deep-house-20260726 · 20260928-194647Z
+
+Nieuwe mix-entry voor de Deep House-mix in Green Light (f), 128 BPM, van 26 juli 2026, met cover en
+audio. De live-ratchet gaat van 77 naar 78 mixen. De tracklist ontbreekt nog en volgt later.
+
+**Score:** 2
+
+#### What makes this deploy extra special
+
+Er staat een nieuwe mix op de site: Deep House, Green Light (f), Vol. 4, af te spelen op de Luister-pagina
+en met een eigen mixpagina. Nog zonder tracklist.
+
+**Score:** 3
+
+#### Pull Request
+
+nieuwe mix: Deep House, Green Light (f), 26 juli 2026
+
+[PR #175](https://github.com/DKJ-Solutions/djcylow-react/pull/175)
+
+---
 
 ### DEPLOY: config/permissies-workflowscripts · 20260928-140321Z
 
