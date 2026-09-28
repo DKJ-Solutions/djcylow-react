@@ -39,19 +39,36 @@
 
 ### PLAN
 
+Part 2 van `adopt-dkj-policy` na de schone lei van #170, met Dave's antwoorden op de
+repo-eigen vragen (2026-09-28).
+
 ### CREATE
 
-- [ ] TODO: the first step of this branch
+- [x] `adopt-config -Apply`: vijf gedeelde instellingen geplaatst in `scripts/repo-config.ps1`
+- [x] elf `decide`-vragen beantwoord, onder andere `Get-CiTestCheckName` = `poort` en `Get-ReleasePageTitle` = `DJ Cylow`
+- [x] `adopt-ci-floor` vastgelegd als afgewezen tot de verhuizing naar DKJ-Solutions (`FOLD_PUSH_TOKEN`)
+- [x] `config-adoption-proposal.md` verwijderd, want die is doorgewerkt
+- [~] `Get-ExpectedRepoSettings` -- open gelaten: de waarden moeten eerst bij GitHub worden nagemeten
 
 ### TEST
 
+- [x] `check-script-contract.ps1`: 0 fouten, alleen `Get-ExpectedRepoSettings` en Part 5 staan nog open
+- [x] lint-poort en testsuite via `open-pr`
+
 ### DEPLOY: config/adopt-config
 
-**Score:**
+De gedeelde workflow-scripts draaien in deze repo nu op antwoorden die hier gekozen zijn, in plaats
+van op fallbacks die niemand koos: de verplichte CI-check (`poort`), de merge-methode, de naam op de
+release-pagina (`DJ Cylow`) en de regel voor wanneer een major mag. Part 3 van de adoptie staat bewust
+uit tot de repo naar DKJ-Solutions verhuist, omdat de runners daar pas bij `FOLD_PUSH_TOKEN` kunnen.
+
+**Score:** 2
 
 #### What makes this deploy extra special
 
-**Score:**
+N/A: alleen configuratie van de werkwijze; `djcylow.com` levert dezelfde pagina's.
+
+**Score:** N/A
 
 #### Pull Request
 

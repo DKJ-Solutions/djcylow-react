@@ -743,3 +743,231 @@ function Get-ReleaseAudienceTier {
 #   Of dat hier gewenst is, is een keuze over wat er naar buiten gaat, en die valt onder "alles wat de
 #   publieke site raakt is Dave's beslissing" in CLAUDE.md. Zolang de seam leeg is weigert -Worker bij
 #   naam, en dat is de eerlijke stand: de pagina wordt nergens gehost.
+
+# --- Adopted from the DKJ-Solutions/dkj-claude-plugins config blueprint ---------------------------------
+#
+# Each function below is the source's own text, comments included, for a value that states the
+# shared way of working rather than a fact about this repo. Edit them freely -- they are this
+# repo's files now, and adopt-config never overwrites a function that is already here.
+
+# Where the generated internal note (tier 1) is written. Stated for one reason: without it
+# Get-DefaultReleaseInternalNotesRoot would answer 'releases/internal' here -- the source branch of that
+# default -- and recreate a root releases/ directory the August 27, 2026 move above just emptied. The
+# other two generated roots (changelog/, github/) need no statement: their defaults stopped branching on
+# the source at #914 and already point into this folder.
+$script:ReleaseInternalNotesRoot = 'dkj-policy/releases/internal'
+
+function Get-ReleaseInternalNotesRoot {
+    <# Repo-root-relative directory the generated internal (tier 1) note is written into. #>
+    return $script:ReleaseInternalNotesRoot
+}
+
+# --- Where this repo keeps its changelog (Dave, August 27, 2026) -----------------------------------
+#
+# THE SAME MOVE, ON THE SAME DAY AND FOR THE SAME REASON as the release history above -- read that record
+# first. Get-DefaultChangelogPath computes 'CHANGELOG.md' for a repo that publishes plugins, i.e. for the
+# workflow's SOURCE, and 'dkj-policy/CHANGELOG.md' for everybody else. This repo is the source
+# and now answers the consumer's way, so the seam has to be stated rather than left to the default.
+#
+# NOT A CHANGE OF MIND ABOUT THE DEFAULT. The default is right about what a repo adopting this workflow
+# should get and says nothing about what THIS repo prefers; the seam exists for exactly this, a repo that
+# wants to differ from its computed answer. Nothing about a consumer changes here.
+#
+# WHAT IT COSTS. A relative link inside a changelog entry now resolves from dkj-policy/ rather
+# than from the repo root, because that is where the fold pastes it. new-branch composes the branch
+# document's guidance from this very seam, so a writer is told the right thing without having to know it,
+# and check-plugin-integrity validates each entry's links against the same resolved location.
+$script:ChangelogPath = 'dkj-policy/CHANGELOG.md'
+
+function Get-ChangelogPath {
+    <# Repo-root-relative path to the changelog the fold writes into and the cut empties. #>
+    return $script:ChangelogPath
+}
+
+# THE ALWAYS-ON CEILING (issue #2037, Dave September 16, 2026): how many BYTES the always-on document
+# path -- CLAUDE.md plus everything it '@'-imports -- may cost, before a single assignment is given.
+#
+# 100,000 IS DAVE'S OWN FIGURE and it is stated here rather than left to the built-in default, because a
+# ceiling a repo has never said out loud is one nobody can argue with. Every measurable repo running
+# this workflow was over it the day it was measured, the source repo included and smallest of the four
+# at 109,385 B -- which is why the gate is a RATCHET rather than a cliff: over the ceiling it refuses
+# growth against a recorded baseline, at or under it it refuses crossing. The mechanism, and why the
+# judgement stays out of measure-context-lib, are in scripts/lib/always-on-budget-lib.ps1.
+#
+# RAISING THIS IS A REAL OPTION AND IT IS MEANT TO BE VISIBLE. A repo whose path is legitimately bigger
+# raises the number here, where the raise sits in a tracked file and gets reviewed with the change that
+# needed it -- which is the whole difference between this seam and no bound at all. What it must NOT
+# become is the way past a red gate: the PATH's own baseline is what moves in that case
+# (check-always-on-budget.ps1 -Raise), because that write carries a reason and this one does not.
+#
+# BYTES, NOT TOKENS, and the unit is not arbitrary. No API prices a document, so a token figure here
+# would be a calibrated estimate wearing the trousers of a measurement -- the exact failure
+# measure-context-lib.ps1 records as this repo's worst: a chars-per-token factor inherited unexamined
+# through three re-measurements, ~19% too generous, every derived figure under-stated while looking
+# precise. A byte is checkable with `wc -c`.
+$script:AlwaysOnBudget = 100000
+
+function Get-AlwaysOnBudget {
+    <# The ceiling in bytes on the always-on document path (CLAUDE.md plus its '@'-import closure).
+       Optional in the script contract: a repo that states nothing runs on the built-in 100,000. #>
+    return $script:AlwaysOnBudget
+}
+
+# --- The triage-priority labels every dkj-policy consumer is invited to share (issue #1895) ---------
+#
+# THE GAP. `.claude/specialists/lenses/specialist-01-01-lens.md` already prescribes a priority label on
+# every issue filed HERE -- 'prio-1' (lowest) through 'prio-4' (highest) -- but until now that scale
+# was prose in one family's page and `dkj-policy` itself knew none of it. #1895 (split from #1843)
+# asked three questions, and Dave answered all three on September 12, 2026:
+#
+#   1. Apply or print?  PRINT. adopt-triage-labels.ps1 composes the exact `gh label create` a person
+#      would type and stops, on the same reasoning Get-MissingLabelNote already applies to a PR
+#      label: creating a label is a GitHub-side write, and a script that quietly created or
+#      substituted one would break any repo that later gates on it.
+#   2. Is there a shared set at all?  YES, one set -- not a per-consumer table.
+#   3. Where is it declared?  HERE, in its own seam -- not in branch-info.ps1 (see AdoptWhy below).
+#
+# 'copy', NOT 'decide', AND THE REASONING IS Get-ReachLabel's, ONE AXIS OVER (issue #1870), NOT
+# Get-BranchInfo's. A 'decide' value states WHAT THE REPO IS -- Get-BranchInfo's three prefixes exist
+# because THIS repo lands a release directly on its trunk, and copying that table into a consumer with
+# a different policy would impose it on them. 'prio-1' through 'prio-4' assert nothing about the
+# adopting repo at all: they are four rungs of urgency, and the rungs mean the same thing in every
+# repo that adopts them -- the shared WAY OF WORKING Get-ReachLabel's own AdoptWhy already argues for
+# the neighbouring axis. Refusing to share them would leave every dkj-policy consumer to reinvent four
+# names and four colours on their own, which is the exact "prose in one family's page" #1895 was filed
+# about.
+#
+# NOT THE SAME QUESTION AS #1686, AND NOT A REVERSAL OF IT. #1686 (closed September 9, 2026) kept this
+# repo's `prio-*` rungs and the BWJ tracker's own reach BUCKETS deliberately disjoint, in both
+# directions, so a session crossing families gets a refused label rather than one that quietly means
+# something else there. This seam does not touch dkj-policy-bwj's buckets or Get-ReachLabel's reach
+# axis at all -- it only offers the priority axis to an ORDINARY dkj-policy consumer, one with no BWJ
+# board of its own, which is a question #1686 never asked.
+#
+# THE VALUES ARE THIS REPO'S OWN LIVE LABELS, read back from `gh label list` rather than invented for
+# this function -- this repo already runs the convention its own orchestrator prescribes, so its
+# answer IS the canonical one instead of a guess at what it should be. adopt-triage-labels.ps1 carries
+# the same four values as its own built-in fallback, for a consumer that has not yet adopted this seam
+# -- see that script's header for why the two copies must stay byte-identical, the same duality
+# Get-EntryFallbackType's 'Chore' already has with entry-scaffold-lib.ps1.
+#
+# NO SCRIPT IN THIS WORKFLOW READS THIS EITHER, same as the priority axis has never been read by
+# anything here (see Get-ReachLabel's own AdoptWhy for why that is not disqualifying): `gh issue
+# create` fails outright on a label the repo does not have, so the four records below exist to be
+# composed into a paste-ready `gh label create` line by adopt-triage-labels.ps1 rather than typed by
+# hand into four separate terminals with four separate chances to mistype a hex colour.
+#
+# AND A FIFTH RECORD THAT IS NOT A RUNG: 'dossier' (issue #2462, Dave September 24, 2026). A dossier is
+# a collecting issue -- every instance of one recurring problem is added to it as a comment until the
+# root cause is found, and no single repair closes it (#2454 was the first). It is a KIND of issue, not
+# an urgency, so it sits beside the rungs rather than among them: a dossier carries a prio-* label of
+# its own like any other issue. Dave ruled it a shared way of working rather than this repo's own label,
+# which is what puts it in this seam -- the same 'copy' reasoning as the rungs, since what a dossier is
+# asserts nothing about the adopting repo. The handling rule lives in CONTRIBUTING-portable.md.
+#
+# AND A SIXTH, A PARKING LABEL: 'needs-decision' (issue #2519, Dave September 26, 2026). An issue that
+# ends in an open choice for the owner is not work anybody can pick up yet, and the claim and sweep
+# routes skip it by default. It is deliberately NOT 'needs-info': in dkj-policy-bwj that label means
+# blocked on the SUBMITTER -- it moves the mirrored Asana card to the blocked column and obliges a
+# question comment to the person who filed it -- and neither is true of a decision that is the owner's.
+# Same 'copy' reasoning: "waiting on the owner" asserts nothing about the adopting repo.
+$script:TriageLabels = @(
+    [pscustomobject]@{ Name = 'prio-1'; Color = '006B75'; Description = 'Priority 1 of 4 (lowest) -- nobody is waiting for it' }
+    [pscustomobject]@{ Name = 'prio-2'; Color = 'FBCA04'; Description = 'Priority 2 of 4 -- worth doing, no pressure' }
+    [pscustomobject]@{ Name = 'prio-3'; Color = 'D93F0B'; Description = 'Priority 3 of 4 -- do this before the ordinary backlog' }
+    [pscustomobject]@{ Name = 'prio-4'; Color = 'B60205'; Description = 'Priority 4 of 4 (highest) -- takes precedence over other work' }
+    [pscustomobject]@{ Name = 'dossier'; Color = '5319E7'; Description = 'Collects every instance of one recurring problem until its root cause is fixed' }
+    [pscustomobject]@{ Name = 'needs-decision'; Color = 'BFD4F2'; Description = 'Waiting on the owner''s choice -- parks the issue so no session picks it up' }
+)
+
+function Get-TriageLabels {
+    <# The canonical triage labels this workflow's consumers are invited to share -- the four
+       priority rungs 'prio-1' (lowest) through 'prio-4' (highest), plus 'dossier', the kind label for
+       a collecting issue, and 'needs-decision', the parking label for an issue awaiting the owner's
+       choice -- as an array of objects with Name, Color and Description (the exact fields
+       a `gh label create` call needs). Read by adopt-triage-labels.ps1, which composes and prints the
+       create command for whichever of them this repo's tracker is missing; it never creates a label
+       itself. Optional in the script contract -- a consumer that has not answered this seam gets the
+       same values from that script's own built-in fallback, so an unanswered repo is already told the
+       canonical set rather than a degraded one. #>
+    return @($script:TriageLabels)
+}
+
+# WHICH OF THAT NOTE'S THREE SECTIONS THIS REPO'S READERS GET (inbound #2564). The wording map above can
+# rename a section but never omit one; this is the seam that omits. Names are the wording keys without
+# 'Section': Audience (what changed), Value (what it is worth), Open (what was still open). All three
+# here, which is also what an absent function means -- this repo's note is written for two readers.
+function Get-ReleaseNoteSections {
+    <# The sections the hand-written release note carries, in any order: Audience, Value, Open. #>
+    return @('Audience', 'Value', 'Open')
+}
+
+# --- Antwoorden op de 'decide'-vragen van adopt-config (Dave, 2026-09-28) --------------------------
+#
+# Gesteld na de schone lei van PR #170. Alleen Get-ExpectedRepoSettings staat nog open: die waarden
+# moeten eerst bij GitHub worden nagemeten.
+
+# Deze repo publiceert geen plugins; dat is ook wat de berekende fallback zegt.
+function Get-ReleasePluginTier {
+    <# $true if this repo publishes plugins whose versions cut-release must bump in lockstep. #>
+    return $false
+}
+
+# 0 = geen close-out-gate: geen Stop-hook die een beurt weigert.
+function Get-CloseOutGateBand {
+    <# The close-out band in non-empty lines; 0 switches the gate off. #>
+    return 0
+}
+
+# De check die de ruleset main-ci-gate verplicht stelt: de job 'poort' in .github/workflows/ci.yml.
+function Get-CiTestCheckName {
+    <# The check context whose green proves this repo's test suites. #>
+    return 'poort'
+}
+
+# Elke PR landt hier als merge-commit ('merge: <branch> (#n)').
+function Get-PrMergeMethod {
+    <# The merge method ship-pr.ps1 uses: 'merge', 'squash' or 'rebase'. #>
+    return 'merge'
+}
+
+# Geen tweede tracker die issues spiegelt, dus geen issue dat na de merge open moet blijven.
+function Get-ResolvesExemptMatchers {
+    <# No matchers: this repo mirrors its issues into no second tracker. #>
+    return @()
+}
+
+# Een major is een recap van de minors ervoor; tien was hier al de afspraak.
+function Get-ReleaseMajorMinMinors {
+    <# The number of minors a major line must have had before a major may be cut. #>
+    return 10
+}
+
+function Get-ReleasePageTitle {
+    <# Whose releases the generated release-notes page carries. #>
+    return 'DJ Cylow'
+}
+
+# De release-pagina wordt nergens gehost.
+function Get-ReleasePageWorkerName {
+    <# The Cloudflare Worker that serves the generated page; '' = this repo hosts it nowhere. #>
+    return ''
+}
+
+function Get-ReleasePageMasthead {
+    <# No marks: the masthead stays the eyebrow, title and subtitle. #>
+    return @()
+}
+
+function Get-ReleasePageTheme {
+    <# No overrides: the page keeps its shipped palette. #>
+    return @{}
+}
+
+# adopt-ci-floor (Part 3) is bewust nog niet gedraaid: de runners pushen de fold met FOLD_PUSH_TOKEN,
+# en die secret is pas bereikbaar zodra deze repo naar de org DKJ-Solutions verhuist. Haal hem hier
+# weg en draai Part 3 na die verhuizing.
+function Get-DeclinedAdoptions {
+    <# The adopt-* commands this repo has deliberately not run. #>
+    return @('adopt-ci-floor')
+}
