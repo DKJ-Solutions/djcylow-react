@@ -904,8 +904,7 @@ function Get-ReleaseNoteSections {
 
 # --- Antwoorden op de 'decide'-vragen van adopt-config (Dave, 2026-09-28) --------------------------
 #
-# Gesteld na de schone lei van PR #170. Alleen Get-ExpectedRepoSettings staat nog open: die waarden
-# moeten eerst bij GitHub worden nagemeten.
+# Gesteld na de schone lei van PR #170.
 
 # Deze repo publiceert geen plugins; dat is ook wat de berekende fallback zegt.
 function Get-ReleasePluginTier {
@@ -970,4 +969,57 @@ function Get-ReleasePageTheme {
 function Get-DeclinedAdoptions {
     <# The adopt-* commands this repo has deliberately not run. #>
     return @('adopt-ci-floor')
+}
+
+# De GitHub-instellingen die deze repo verklaart, voor check-repo-settings.ps1. Nagemeten via de API op
+# 2026-09-28 (ruleset main-ci-gate, id 20818953). Een afwijking betekent: óf GitHub is veranderd, óf
+# deze verklaring -- beslis eerst welke kant fout is, en werk dan de waarde én Recorded bij.
+$script:ExpectedRepoSettings = @(
+    @{
+        Field    = 'ruleset.rules'
+        Expected = @('deletion', 'non_fast_forward', 'required_status_checks')
+        Recorded = '2026-09-28'
+        Where    = 'scripts/repo-config.ps1 (Get-ExpectedRepoSettings)'
+        Why      = 'de ruleset is wat een merge naar main -- en dus een deploy naar djcylow.com -- achter een groene poort houdt'
+    },
+    @{
+        Field    = 'ruleset.required_checks'
+        Expected = @('poort')
+        Recorded = '2026-09-28'
+        Where    = 'scripts/repo-config.ps1 (Get-CiTestCheckName) en .github/workflows/ci.yml (job poort)'
+        Why      = 'open-pr en ship-pr lezen het certificaat van precies deze check; hernoem je de job, dan moet de ruleset mee'
+    },
+    @{
+        Field    = 'ruleset.strict_required_status_checks_policy'
+        Expected = $true
+        Recorded = '2026-09-28'
+        Where    = 'scripts/repo-config.ps1 (Get-ExpectedRepoSettings)'
+        Why      = 'aan sinds 2026-08-15: twee PRs die los groen zijn, mogen niet samen ongetoetst live gaan -- hier staat een merge binnen minuten op de site'
+    },
+    @{
+        Field    = 'ruleset.bypass_actor_types'
+        Expected = @('RepositoryRole')
+        Recorded = '2026-09-28'
+        Where    = 'scripts/repo-config.ps1 (Get-ExpectedRepoSettings)'
+        Why      = 'Admin en Maintain (rol 5 en 4) moeten langs de ruleset voor de fold en de release-commit, die rechtstreeks op main landen'
+    },
+    @{
+        Field    = 'repo.allow_auto_merge'
+        Expected = $false
+        Recorded = '2026-09-28'
+        Where    = 'scripts/repo-config.ps1 (Get-ExpectedRepoSettings)'
+        Why      = 'frontend-werk wacht op Dave zijn blik op de deploy preview; auto-merge zou dat werk ongezien live zetten'
+    },
+    @{
+        Field    = 'repo.visibility'
+        Expected = 'public'
+        Recorded = '2026-09-28'
+        Where    = 'scripts/repo-config.ps1 (Get-ExpectedRepoSettings)'
+        Why      = 'de repo is publiek; daarom horen er geen secrets of tokens in de tree'
+    }
+)
+
+function Get-ExpectedRepoSettings {
+    <# The GitHub-side ruleset and repo settings this repo declares, read by check-repo-settings.ps1. #>
+    return $script:ExpectedRepoSettings
 }
