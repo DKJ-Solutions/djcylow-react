@@ -39,19 +39,36 @@
 
 ### PLAN
 
+De vier punten die na #171 openstonden, op Dave's woord ("de hele reeks", 2026-09-28).
+
 ### CREATE
 
-- [ ] TODO: the first step of this branch
+- [x] `Get-ExpectedRepoSettings`: zes GitHub-instellingen verklaard, nagemeten via de API
+- [x] adoptie Part 5: `.claude/statusline/dkj-progress.ps1` en de `statusLine` in `.claude/settings.json`
+- [x] deny- en ask-lijst en de marketplace-verwijzing terug in `.claude/settings.json`
+- [x] oud PR-sjabloon vervangen door dat van adoptie Part 1; `scripts/task/shared.ps1` verwijderd
+- [x] verwijzing naar het oude `CONTRIBUTING.md` uit `scripts/add-mix.js` gehaald
 
 ### TEST
 
+- [x] `check-repo-settings.ps1`: 6 van 6 instellingen komen overeen met GitHub
+- [x] lint-poort en testsuite via `open-pr`
+
 ### DEPLOY: config/adoptie-afronden
 
-**Score:**
+De adoptie van dkj-policy is af, op Part 3 na, dat wacht op de verhuizing naar DKJ-Solutions. De
+beschermde bestanden (`next.config.ts`, `netlify.toml`, `public/images/`) en het verbod op
+force-push, `reset --hard`, `rebase` en `gh repo delete` staan weer in `.claude/settings.json`,
+na één dag zonder. Zes GitHub-instellingen, waaronder de ruleset `main-ci-gate`, zijn nu verklaard,
+zodat een drift gemeld wordt in plaats van onopgemerkt te blijven.
+
+**Score:** 3
 
 #### What makes this deploy extra special
 
-**Score:**
+N/A: alleen de werkomgeving en configuratie; `djcylow.com` levert dezelfde pagina's.
+
+**Score:** N/A
 
 #### Pull Request
 
