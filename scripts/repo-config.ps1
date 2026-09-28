@@ -232,7 +232,7 @@ function Get-MojibakePaths {
     # already been copied twice.
     # -Recurse covers the folder's scaffolded docs and the audience notes that moved in here on
     # August 16, 2026. The development notes did NOT move -- the block below still covers those.
-    $workflowDir = Join-Path $RepoRoot 'contributing-davekjohn'
+    $workflowDir = Join-Path $RepoRoot 'dkj-policy'
     if (Test-Path -LiteralPath $workflowDir) {
         $paths += @(Get-ChildItem -LiteralPath $workflowDir -Recurse -Filter '*.md' -File |
             Select-Object -ExpandProperty FullName)
@@ -318,7 +318,8 @@ function Get-MojibakePaths {
 # that split exists, process-versus-outcome stops earning a file boundary -- the outcome IS repo-specific
 # content, so it is simply the last section of the slot. Merging them also removed four cross-references
 # the two pages needed to introduce each other, and left a consumer with one file to mirror instead of two.
-$script:ReleaseHistoryPath = 'contributing-davekjohn/releases/README.md'
+# 2026-09-28: de map heet sindsdien dkj-policy/ en de pagina history.md, zoals bij de andere consumers
+$script:ReleaseHistoryPath = 'dkj-policy/releases/history.md'
 
 function Get-ReleaseHistoryPath {
     <# Repo-root-relative path to the file that lists every release this repo has cut. #>
@@ -454,7 +455,7 @@ function Get-ReleaseNotesGrouping {
 # git mv naar contributing-davekjohn/releases/changelog/ en .../github/ resolven beide roots nu vanzelf
 # op hun berekende default; net als hierboven bij audience/ hoeft er voor geen van beide iets in dit
 # bestand gedeclareerd te worden.
-$script:ReleaseNoteRoot = 'contributing-davekjohn/releases/audience'
+$script:ReleaseNoteRoot = 'dkj-policy/releases/audience'
 
 function Get-ReleaseNoteRoot {
     <# Root-relatieve map van het handgeschreven release-document. Hier workflow-davekjohn/releases/audience. #>

@@ -299,7 +299,7 @@ try {
         if ($strippedCache.ContainsKey($RelPath)) { return $strippedCache[$RelPath] }
         # Geen omzetting naar backslashes: Windows accepteert forward slashes prima, Linux accepteert
         # backslashes NIET. Een pad uit git is dus overal bruikbaar zoals het is.
-        $lines = @(Get-Content -LiteralPath (Join-Path $repoRoot $RelPath) -Encoding UTF8)
+        $lines = @(Get-Content -LiteralPath (Join-Path $repoRoot $RelPath) -Encoding UTF8 | Where-Object { $null -ne $_ })
         $strippedCache[$RelPath] = Remove-CodeRegions -Lines $lines -SpansToo
         return $strippedCache[$RelPath]
     }
@@ -308,7 +308,7 @@ try {
         # Voor het lezen van koppen: alleen fences weg -- code-spans tellen mee in het anker.
         param([string]$RelPath)
         if ($anchorCache.ContainsKey($RelPath)) { return $anchorCache[$RelPath] }
-        $lines = @(Get-Content -LiteralPath (Join-Path $repoRoot $RelPath) -Encoding UTF8)
+        $lines = @(Get-Content -LiteralPath (Join-Path $repoRoot $RelPath) -Encoding UTF8 | Where-Object { $null -ne $_ })
         $a = Get-HeadingAnchors -StrippedLines (Remove-CodeRegions -Lines $lines)
         $anchorCache[$RelPath] = $a
         return $a
@@ -322,7 +322,9 @@ try {
     $linkCount = 0
 
     foreach ($md in $mdFiles) {
-        $stripped = Get-Stripped -RelPath $md
+        # @() omdat een leeg bestand (zoals CLAUDE.md sinds 2026-09-28) $null oplevert, en .Count
+        # daarop faalt onder StrictMode.
+        $stripped = @(Get-Stripped -RelPath $md)
 
         for ($i = 0; $i -lt $stripped.Count; $i++) {
             $line = [string]$stripped[$i]
@@ -390,7 +392,8 @@ try {
                 if (-not $files.Contains($resolved)) { continue }
 
                 $anchors = Get-Anchors -RelPath $resolved
-                if (-not $anchors.Contains($anchor.ToLowerInvariant())) {
+                # $null bij een bestand zonder koppen: dan is elk anker erin dood.
+                if ($null -eq $anchors -or -not $anchors.Contains($anchor.ToLowerInvariant())) {
                     $where = if ($resolved -eq $md) { 'in dit bestand' } else { "in $resolved" }
                     $problems.Add([pscustomobject]@{
                         File = $md; Line = ($i + 1); Target = $target
