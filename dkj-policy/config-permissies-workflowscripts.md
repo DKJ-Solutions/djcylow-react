@@ -63,5 +63,5 @@ N/A -- alleen de werkomgeving van Claude Code verandert; de site niet.
 
 #### Pull Request
 
-workflowscripts zonder permissieprompt
+git- en gh-routine zonder permissieprompt
 
