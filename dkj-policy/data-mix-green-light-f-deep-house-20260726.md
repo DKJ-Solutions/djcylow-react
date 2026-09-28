@@ -67,7 +67,7 @@ mix gehoord te hebben en noemen daarom geen specifieke tracks.
 
 - [x] `npm test` groen (213 tests)
 - [x] Mixpagina lokaal: 200, titel "Green Deep House Mix Vol. 4 | DJ Cylow", cover laadt, "Geen tracklist beschikbaar"
-- [ ] Dave heeft de pagina bekeken en goedgekeurd
+- [x] Dave heeft de pagina bekeken en goedgekeurd ("merge", 2026-09-28)
 
 ### DEPLOY: data/mix-green-light-f-deep-house-20260726
 
