@@ -2,7 +2,27 @@
 
 ## [Unreleased]
 
-**1 / 8 minor entries** <!-- pending-tally -->
+**1 / 9 minor entries** <!-- pending-tally -->
+
+### DEPLOY: config/repo-naar-dkj-solutions · 20260928-140058Z
+
+De repo woont nu onder de organisatie `DKJ-Solutions` in plaats van onder het persoonlijke account `DaveKJohn`. `Get-RepoName` wijst daarom naar `DKJ-Solutions/djcylow-react`, zodat de workflowscripts hun `gh`-aanroepen op het nieuwe adres doen in plaats van op de redirect van GitHub te leunen. Oude links blijven werken dankzij die redirect; historische changelog-regels zijn bewust niet herschreven.
+
+**Score:** 2
+
+#### What makes this deploy extra special
+
+N/A -- de website en wat bezoekers zien veranderen niet; alleen waar de broncode staat.
+
+**Score:** N/A
+
+#### Pull Request
+
+repo verhuisd naar DKJ-Solutions
+
+[PR #173](https://github.com/DKJ-Solutions/djcylow-react/pull/173)
+
+---
 
 ### DEPLOY: config/adoptie-afronden · 20260928-133610Z
 
