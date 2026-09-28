@@ -2,7 +2,31 @@
 
 ## [Unreleased]
 
-**1 / 7 minor entries** <!-- pending-tally -->
+**1 / 8 minor entries** <!-- pending-tally -->
+
+### DEPLOY: config/adoptie-afronden · 20260928-133610Z
+
+De adoptie van dkj-policy is af, op Part 3 na, dat wacht op de verhuizing naar DKJ-Solutions. De
+beschermde bestanden (`next.config.ts`, `netlify.toml`, `public/images/`) en het verbod op
+force-push, `reset --hard`, `rebase` en `gh repo delete` staan weer in `.claude/settings.json`,
+na één dag zonder. Zes GitHub-instellingen, waaronder de ruleset `main-ci-gate`, zijn nu verklaard,
+zodat een drift gemeld wordt in plaats van onopgemerkt te blijven.
+
+**Score:** 3
+
+#### What makes this deploy extra special
+
+N/A: alleen de werkomgeving en configuratie; `djcylow.com` levert dezelfde pagina's.
+
+**Score:** N/A
+
+#### Pull Request
+
+Adoptie afgerond: bewaakte repo-instellingen, voortgangsbalk, beveiligingsregels terug
+
+[PR #172](https://github.com/DaveKJohn/djcylow-react/pull/172)
+
+---
 
 ### DEPLOY: config/adopt-config · 20260928-133000Z
 
