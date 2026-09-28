@@ -39,19 +39,39 @@
 
 ### PLAN
 
+Op Dave's verzoek: een schone lei voor de Claude-werkwijze in deze repo, met behoud van de
+release-historie.
+
 ### CREATE
 
-- [ ] TODO: the first step of this branch
+- [x] `CLAUDE.md` geleegd, root-`README.md` en heel `.claude/` verwijderd
+- [x] `dkj-policy`, `dkj-subagents-alpha` en `figma` op project-scope verwijderd en opnieuw geïnstalleerd
+- [x] `contributing-davekjohn/` met `git mv` naar `dkj-policy/`; `releases/README.md` hernoemd naar `releases/history.md`
+- [x] `CONTRIBUTING.md` en `README.md` van de oude map verwijderd (door Dave)
+- [x] `history.md` teruggebracht tot titel plus de 40 versierijen
+- [x] paden in `scripts/repo-config.ps1` naar `dkj-policy/`
+- [x] `check-links.ps1` bestand tegen een leeg markdownbestand, en drie dode links hersteld
+- [x] adoptie Part 1: `branch-entry.yml`, `always-on-budget.yml` en de grondwet-import in `CLAUDE.md`
 
 ### TEST
 
+- [x] `scripts/lint/lint-web.ps1` groen: 0 fouten, 89 statische pagina's, geen dode links
+- [x] `npm test` groen: 16 suites, 213 tests
+
 ### DEPLOY: config/schone-lei
 
-**Score:**
+De oude, repo-eigen Claude-werkwijze is weg: `CLAUDE.md` bevat alleen nog de import van de
+dkj-policy-grondwet, `.claude/` alleen de plugin-instellingen, en de root-`README.md` is verwijderd.
+De release-historie is bewaard en staat nu in `dkj-policy/`, met het overzicht als
+[`releases/history.md`](releases/history.md), zoals bij de andere consumers. De site zelf verandert niet.
+
+**Score:** 4
 
 #### What makes this deploy extra special
 
-**Score:**
+N/A: dit raakt alleen hoe er aan de repo gewerkt wordt; `djcylow.com` levert dezelfde pagina's.
+
+**Score:** N/A
 
 #### Pull Request
 

@@ -1,0 +1,27 @@
+# Every PR into the trunk carries a WRITTEN changelog entry.
+#
+# The runner is not in this file: it is a reusable workflow in DKJ-Solutions/dkj-claude-plugins,
+# which runs check-branch-entry.ps1 -- the same two functions open-pr calls locally. One definition
+# of the gate, and a change to it reaches this repo without re-adopting. Its reasoning is written there.
+#
+# WHICH BRANCHES OWE NOTHING: answer Get-EntryGateExemptPrefixes in scripts/repo-config.ps1. It
+# defaults to 'sync' -- a mirror branch carries somebody else's work, so it has nothing to declare.
+#
+# @main IS DELIBERATE: a pinned gate enforces the shape it was pinned at, and the entry path has moved
+# twice. To pin, name a tag in `uses:` AND pass the same tag as `with: scripts-ref:`.
+name: Branch entry
+
+# pull-requests: read AND edited HOLD THE DEPLOY LOCK: the runner reads the PR body to refuse a DEPLOY
+# section changed since the PR opened, and edited lets it look again after open-pr -RefreshBody.
+permissions:
+  contents: read
+  pull-requests: read
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+    branches: [main]
+
+jobs:
+  branch-entry:
+    uses: DKJ-Solutions/dkj-claude-plugins/.github/workflows/reusable-branch-entry.yml@main

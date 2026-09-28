@@ -1,0 +1,24 @@
+# The always-on budget: a PR may not grow what every session pays before a single assignment is
+# given -- CLAUDE.md plus everything it '@'-imports.
+#
+# The runner is not in this file: it is a reusable workflow in DKJ-Solutions/dkj-claude-plugins,
+# which runs check-always-on-budget.ps1 -- the same verdict open-pr reads locally and the session
+# hook reports at start. Its reasoning is written there.
+#
+# WHAT THE CEILING IS: answer Get-AlwaysOnBudget in scripts/repo-config.ps1, in BYTES. Unanswered,
+# it is 100,000. A repo already over it is held at a recorded baseline rather than refused.
+#
+# @main IS DELIBERATE, for the reason branch-entry.yml states. To pin, name a tag in `uses:` AND
+# pass the same tag as `with: scripts-ref:`.
+name: Always-on budget
+
+permissions:
+  contents: read
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  always-on-budget:
+    uses: DKJ-Solutions/dkj-claude-plugins/.github/workflows/reusable-always-on-budget.yml@main
