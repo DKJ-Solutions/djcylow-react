@@ -39,19 +39,27 @@
 
 ### PLAN
 
+De repo is op GitHub overgedragen van `DaveKJohn` naar de organisatie `DKJ-Solutions`; de lokale `origin` is al omgezet. Deze branch zet het enige repo-feit dat de eigenaar noemt mee.
+
 ### CREATE
 
-- [ ] TODO: the first step of this branch
+- [x] `scripts/repo-config.ps1`: `$script:RepoName` naar `DKJ-Solutions/djcylow-react`
 
 ### TEST
 
+- [x] `Get-RepoName` geeft `DKJ-Solutions/djcylow-react` terug
+
 ### DEPLOY: config/repo-naar-dkj-solutions
 
-**Score:**
+De repo woont nu onder de organisatie `DKJ-Solutions` in plaats van onder het persoonlijke account `DaveKJohn`. `Get-RepoName` wijst daarom naar `DKJ-Solutions/djcylow-react`, zodat de workflowscripts hun `gh`-aanroepen op het nieuwe adres doen in plaats van op de redirect van GitHub te leunen. Oude links blijven werken dankzij die redirect; historische changelog-regels zijn bewust niet herschreven.
+
+**Score:** 2
 
 #### What makes this deploy extra special
 
-**Score:**
+N/A -- de website en wat bezoekers zien veranderen niet; alleen waar de broncode staat.
+
+**Score:** N/A
 
 #### Pull Request
 
