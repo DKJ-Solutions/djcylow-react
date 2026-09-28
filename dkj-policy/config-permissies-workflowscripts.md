@@ -39,19 +39,19 @@
 
 ### PLAN
 
-Dave heeft een aantal permissieprompts op "altijd toestaan" gezet; die regels staan nu in `.claude/settings.json` en gaan hier mee de repo in.
+Dave heeft een `allow`-lijst in `.claude/settings.json` gezet, zodat routinematig git- en gh-werk niet meer om toestemming vraagt; die gaat hier mee de repo in.
 
 ### CREATE
 
-- [x] `.claude/settings.json`: `allow`-lijst voor `new-branch`, `open-pr` en `ship-pr` (Bash en PowerShell) en `gh repo edit --delete-branch-on-merge`
+- [x] `.claude/settings.json`: `allow`-lijst voor de dagelijkse `git`-commando's (status t/m push en tag) en de `gh`-commando's `pr`, `issue`, `run`, `label`, `workflow` en `repo view`, elk voor Bash en PowerShell
 
 ### TEST
 
-- [x] `settings.json` is geldige JSON; de bestaande `deny`-regels (force-push e.d.) staan er ongewijzigd in
+- [x] `settings.json` is geldige JSON (48 allow, 13 deny); de bestaande `deny`-regels (force-push e.d.) staan er ongewijzigd in
 
 ### DEPLOY: config/permissies-workflowscripts
 
-De drie workflowscripts van dkj-policy (`new-branch`, `open-pr`, `ship-pr`) en `gh repo edit --delete-branch-on-merge` draaien nu zonder permissieprompt. De regels staan in `.claude/settings.json` onder `allow`. De `deny`-lijst, met onder meer force-push, blijft staan en gaat voor.
+Routinematig `git`-werk (status, diff, log, branch, fetch, pull, add, commit, checkout, merge, push, tag e.d.) en de `gh`-commando's `pr`, `issue`, `run`, `label`, `workflow` en `repo view` vragen niet langer om toestemming, in Bash en in PowerShell. De regels staan in `.claude/settings.json` onder `allow`. De `deny`-lijst gaat voor, dus force-push, `reset --hard`, `rebase` en `rm -rf` blijven geblokkeerd.
 
 **Score:** 2
 

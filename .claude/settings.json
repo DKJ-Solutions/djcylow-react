@@ -48,7 +48,7 @@
       "PowerShell(gh run:*)",
       "PowerShell(gh label:*)",
       "PowerShell(gh workflow:*)",
-      "PowerShell(gh repo view:*)",
+      "PowerShell(gh repo view:*)"
     ],
     "deny": [
       "Bash(git push --force:*)",
