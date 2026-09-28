@@ -39,42 +39,49 @@
 
 ### PLAN
 
-Nieuwe mix: Deep House, Green Light (f), 128 BPM, 2026-07-26. Site-volume `Vol. 1` (eerste Deep
-House in deze serie), `volume_spotify` 4 (na drie Progressive House-mixes in Green Light (f) 128).
-De mp3 staat op de actieve R2-bucket als `Green_Light_f_EDM_128BPM_20260726_Audio_V1 (Vol. 4).mp3`
-(HEAD-request: 200, audio/mpeg, ~145 MB).
+Nieuwe mix: Deep House, Green Light (f), 128 BPM, 2026-07-26. De mp3 staat op de actieve R2-bucket als
+`Green_Light_f_EDM_128BPM_20260726_Audio_V1 (Vol. 4).mp3` (HEAD-request: 200, audio/mpeg, ~145 MB).
 
-#### Stand bij het openen van de PR
+#### Volume: Vol. 4 op verzoek van Dave
 
-De PR is geopend op verzoek van Dave terwijl de tracklist nog ontbreekt. Deze ronde levert alleen de
-cover. De JSON-entry kan er nog niet in: een live entry zonder tracklist is geen mix, en met
-`ignore: true` breekt hij de preview-tests (precies acht previews, geen datum-`id`). De entry komt
-op deze branch zodra de tracklist er is. Daarna volgen nieuwe stappen hieronder, en dan ook de
-beoordeling door Dave op de lokale pagina voordat er gemerged wordt (zichtbaar resultaat).
+De spec telt `volume` per subgenre, wat hier Vol. 1 zou geven (eerste Deep House in Green Light (f)).
+Dave koos Vol. 4, gelijk aan `volume_spotify` en de audiobestandsnaam, dus doorgeteld over de hele
+Green Light (f) 128-serie. De README noemt dat telpatroon al als bestaande praktijk in dertien series.
+
+#### Zonder tracklist live, op verzoek van Dave
+
+De tracklist komt later. De entry staat live met `tracklist: []`, `tracks: 0` en `top_artists: []`;
+de pagina toont dan "Geen tracklist beschikbaar". De beschrijvingen en tags zijn geschreven zonder de
+mix gehoord te hebben en noemen daarom geen specifieke tracks.
 
 ### CREATE
 
 - [x] Cover uit `H:\1) Music Mood Colours\...\20260726 (Vol. 4)\Thumb\Wide` (1920x1080 JPG) omgezet
       met sharp naar `image_light_green_wide_20260726_large.webp` (1920x1080, q90) en `_small.webp`
       (480x270, q90) in `public/images/light/green/wide/`
+- [x] Entry `20260726` bovenaan `src/data/mixes/light-green.json`
+- [x] Ratchet `liveMixen` in `tests/mix-data.test.ts` van 77 naar 78
+- [~] Tracklist, `tracks` en `top_artists`: overgeslagen op verzoek van Dave, volgt in een aparte branch
 
 ### TEST
 
-- [x] `npm test` groen: de nieuwe afbeeldingen raken nog geen entry, dus geen test verandert van uitkomst
+- [x] `npm test` groen (213 tests)
+- [x] Mixpagina lokaal: 200, titel "Green Deep House Mix Vol. 4 | DJ Cylow", cover laadt, "Geen tracklist beschikbaar"
+- [ ] Dave heeft de pagina bekeken en goedgekeurd
 
 ### DEPLOY: data/mix-green-light-f-deep-house-20260726
 
-De cover van de nieuwe Deep House-mix in Green Light (f) van 26 juli 2026 staat in `public/images/`,
-als large (1920x1080) en small (480x270) webp. Nog geen enkele pagina verwijst ernaar; de mix-entry
-volgt zodra de tracklist er is.
+Nieuwe mix-entry voor de Deep House-mix in Green Light (f), 128 BPM, van 26 juli 2026, met cover en
+audio. De live-ratchet gaat van 77 naar 78 mixen. De tracklist ontbreekt nog en volgt later.
 
-**Score:** 1
+**Score:** 2
 
 #### What makes this deploy extra special
 
-N/A: nog niets zichtbaar op de site; de mix zelf komt pas met de JSON-entry.
+Er staat een nieuwe mix op de site: Deep House, Green Light (f), Vol. 4, af te spelen op de Luister-pagina
+en met een eigen mixpagina. Nog zonder tracklist.
 
-**Score:** N/A
+**Score:** 3
 
 #### Pull Request
 
