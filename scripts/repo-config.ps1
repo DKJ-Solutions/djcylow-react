@@ -56,7 +56,7 @@
 . (Join-Path $PSScriptRoot 'lib\branch-info.ps1')
 
 # De GitHub-repo waar deze website woont (owner/naam). Enige plek waar dit staat.
-$script:RepoName = 'DaveKJohn/djcylow-react'
+$script:RepoName = 'DKJ-Solutions/djcylow-react'
 
 function Get-RepoName {
     <# owner/naam van deze repo, bv. voor `gh ... --repo`. #>
