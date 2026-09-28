@@ -39,19 +39,27 @@
 
 ### PLAN
 
+Dave heeft een aantal permissieprompts op "altijd toestaan" gezet; die regels staan nu in `.claude/settings.json` en gaan hier mee de repo in.
+
 ### CREATE
 
-- [ ] TODO: the first step of this branch
+- [x] `.claude/settings.json`: `allow`-lijst voor `new-branch`, `open-pr` en `ship-pr` (Bash en PowerShell) en `gh repo edit --delete-branch-on-merge`
 
 ### TEST
 
+- [x] `settings.json` is geldige JSON; de bestaande `deny`-regels (force-push e.d.) staan er ongewijzigd in
+
 ### DEPLOY: config/permissies-workflowscripts
 
-**Score:**
+De drie workflowscripts van dkj-policy (`new-branch`, `open-pr`, `ship-pr`) en `gh repo edit --delete-branch-on-merge` draaien nu zonder permissieprompt. De regels staan in `.claude/settings.json` onder `allow`. De `deny`-lijst, met onder meer force-push, blijft staan en gaat voor.
+
+**Score:** 2
 
 #### What makes this deploy extra special
 
-**Score:**
+N/A -- alleen de werkomgeving van Claude Code verandert; de site niet.
+
+**Score:** N/A
 
 #### Pull Request
 
