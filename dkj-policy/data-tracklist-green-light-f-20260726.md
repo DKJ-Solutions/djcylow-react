@@ -64,7 +64,7 @@ zoals de spec vraagt, gespeld zoals in de tracklist.
 - [x] `npm test` groen (213 tests)
 - [x] Mixpagina lokaal (`/luister/mix/green-light-f-edm-128bpm-20260726`): 200, eerste en laatste track
       staan erop, "Geen tracklist beschikbaar" is weg
-- [ ] Dave heeft de pagina bekeken en goedgekeurd
+- [x] Dave heeft de pagina bekeken en goedgekeurd
 
 ### DEPLOY: data/tracklist-green-light-f-20260726
 
