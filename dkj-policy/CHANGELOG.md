@@ -2,7 +2,29 @@
 
 ## [Unreleased]
 
-**2 / 11 minor entries** <!-- pending-tally -->
+**3 / 12 minor entries** <!-- pending-tally -->
+
+### DEPLOY: data/tracklist-green-light-f-20260726 · 20260930-214053Z
+
+De Deep House-mix in Green Light (f), Vol. 4, van 26 juli 2026 heeft nu zijn tracklist: 29 tracks met
+tijden, plus Kaskade, Ben Böhmer en Shingo Nakamura als top-artiesten.
+
+**Score:** 2
+
+#### What makes this deploy extra special
+
+Bezoekers van de mixpagina zien nu welke tracks er in de mix zitten, en de artiestnamen worden
+doorzoekbaar voor zoekmachines.
+
+**Score:** 2
+
+#### Pull Request
+
+tracklist voor Deep House, Green Light (f), 26 juli 2026
+
+[PR #176](https://github.com/DKJ-Solutions/djcylow-react/pull/176)
+
+---
 
 ### DEPLOY: data/mix-green-light-f-deep-house-20260726 · 20260928-194647Z
 
