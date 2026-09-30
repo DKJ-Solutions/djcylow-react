@@ -39,21 +39,48 @@
 
 ### PLAN
 
+Vervolg op #175: de mix-entry `20260726` (Deep House, Green Light (f), Vol. 4) ging live zonder
+tracklist. Dave leverde de tracklist aan als
+`Green_Light_f_EDM_128BPM_20260726_Audio_V1 (Vol. 4).txt` (de YouTube-beschrijving), naast de audio op `H:`.
+
+#### Tracks letterlijk overgenomen
+
+De 29 regels zijn woordelijk uit het tekstbestand gehaald, inclusief de schrijfwijze van `ft.`, `w` en
+`x` tussen artiesten. Herschrijven naar de spec-vorm (`(ft. ...)` achter de titel) zou afwijken van de
+gepubliceerde tekst, en de tests eisen alleen `HH:MM:SS` en ` - `, waar alle 29 aan voldoen.
+
+#### top_artists
+
+Kaskade, Ben Böhmer en Shingo Nakamura: de drie bekendste namen in de lijst, gekozen op bekendheid
+zoals de spec vraagt, gespeld zoals in de tracklist.
+
 ### CREATE
 
-- [ ] TODO: the first step of this branch
+- [x] `tracklist` (29 tracks, `00:01:00` t/m `00:56:49`), `tracks: 29` en `top_artists` ingevuld in
+      entry `20260726` van `src/data/mixes/light-green.json`; de rest van het bestand is byte-gelijk
 
 ### TEST
 
+- [x] `npm test` groen (213 tests)
+- [x] Mixpagina lokaal (`/luister/mix/green-light-f-edm-128bpm-20260726`): 200, eerste en laatste track
+      staan erop, "Geen tracklist beschikbaar" is weg
+- [ ] Dave heeft de pagina bekeken en goedgekeurd
+
 ### DEPLOY: data/tracklist-green-light-f-20260726
 
-**Score:**
+De Deep House-mix in Green Light (f), Vol. 4, van 26 juli 2026 heeft nu zijn tracklist: 29 tracks met
+tijden, plus Kaskade, Ben Böhmer en Shingo Nakamura als top-artiesten.
+
+**Score:** 2
 
 #### What makes this deploy extra special
 
-**Score:**
+Bezoekers van de mixpagina zien nu welke tracks er in de mix zitten, en de artiestnamen worden
+doorzoekbaar voor zoekmachines.
+
+**Score:** 2
 
 #### Pull Request
 
-Tracklist Deep House Green Light (f) Vol. 4
+tracklist voor Deep House, Green Light (f), 26 juli 2026
 

@@ -25,7 +25,7 @@
     "image_square": "",
     "featured": false,
     "ignore": false,
-    "top_artists": [],
+    "top_artists": ["Kaskade", "Ben Böhmer", "Shingo Nakamura"],
     "tags": [
       "deep house mix 2026",
       "deep house",
@@ -45,8 +45,125 @@
       "music mood colours",
       "electronic music 2026"
     ],
-    "tracks": 0,
-    "tracklist": []
+    "tracks": 29,
+    "tracklist": [
+      {
+        "time": "00:01:00",
+        "track": "eleven.five & Arielle Maren - Remember (Blood Groove & Kikis Remix)"
+      },
+      {
+        "time": "00:02:36",
+        "track": "Sam Davies - Sunbound (Alexander Volosnikov Remix)"
+      },
+      {
+        "time": "00:04:38",
+        "track": "Luttrell - Dipper"
+      },
+      {
+        "time": "00:06:40",
+        "track": "São Miguel - Love Affair"
+      },
+      {
+        "time": "00:08:42",
+        "track": "Ben Böhmer - Soulline"
+      },
+      {
+        "time": "00:10:43",
+        "track": "Ambyion & shibíre - Movement"
+      },
+      {
+        "time": "00:12:49",
+        "track": "Gregory Esayan - The Best Gift"
+      },
+      {
+        "time": "00:14:47",
+        "track": "Blood Groove & Kikis - Close To You (Valiant 'Pierside' Remix)"
+      },
+      {
+        "time": "00:16:49",
+        "track": "Veeshy - Elevated"
+      },
+      {
+        "time": "00:18:50",
+        "track": "CRi - I Can Make It"
+      },
+      {
+        "time": "00:20:53",
+        "track": "Nathan Rux - Morning Sun"
+      },
+      {
+        "time": "00:22:55",
+        "track": "Mango & Astroleaf - We Tried (Talamanca Vocal Remix)"
+      },
+      {
+        "time": "00:24:57",
+        "track": "Airdraw, Jo.E & Aaren - Bryde's Whale"
+      },
+      {
+        "time": "00:26:59",
+        "track": "Aftruu ft. Astroleaf - I've Been Letting Go Of You"
+      },
+      {
+        "time": "00:29:01",
+        "track": "Mazani - All Good Things"
+      },
+      {
+        "time": "00:31:03",
+        "track": "Jaded - Can You Feel It (Luttrell Remix)"
+      },
+      {
+        "time": "00:33:04",
+        "track": "Gregory Esayan - Your Warmth"
+      },
+      {
+        "time": "00:35:06",
+        "track": "Rezident - Message"
+      },
+      {
+        "time": "00:37:09",
+        "track": "Shingo Nakamura - Sapporo"
+      },
+      {
+        "time": "00:39:10",
+        "track": "Curbi - Spiritual (Mriya) ft. Brooke Tomlinson"
+      },
+      {
+        "time": "00:41:12",
+        "track": "Lövestad - Antidote"
+      },
+      {
+        "time": "00:43:14",
+        "track": "Denis Laurent ft. Kaisa Martina - All I Need (Vocal Mix)"
+      },
+      {
+        "time": "00:45:45",
+        "track": "Enviado Vida - Best Of Times"
+      },
+      {
+        "time": "00:47:32",
+        "track": "LTN, Stendahl & Arielle Maren - Black Hole (Original Vocal Mix)"
+      },
+      {
+        "time": "00:49:49",
+        "track": "Leaving Laurel - one last thing you never said"
+      },
+      {
+        "time": "00:51:52",
+        "track": "Vintage & Morelli x Arielle Maren w RNX - Lonely Shore (Blood Groove & Kikis Remix)"
+      },
+      {
+        "time": "00:53:54",
+        "track": "Kaskade & Project 46 - Chains Chilled"
+      },
+      {
+        "time": "00:55:55",
+        "track": "Schodt ft. Aida Fenhel - Wild At Heart (Toby Hedges Remix)"
+      },
+      {
+        "time": "00:56:49",
+        "track": "ALPHA 9 - Feels Like Home"
+      }
+    ]
   },
   {
     "id": "20260407",
