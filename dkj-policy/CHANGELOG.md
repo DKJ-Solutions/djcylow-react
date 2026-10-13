@@ -2,7 +2,27 @@
 
 ## [Unreleased]
 
-**3 / 12 minor entries** <!-- pending-tally -->
+**4 / 13 minor entries** <!-- pending-tally -->
+
+### DEPLOY: config/enable-dkj-solutions · 20261013-085112Z
+
+This repo enables the `dkj-solutions` extension. Every session here now reads the DKJ-Solutions house style rules: visual work starts from the stylesheet in [DKJ-Solutions/dkj-brandbook](https://github.com/DKJ-Solutions/dkj-brandbook), and a change to the house style itself is filed as an issue there instead of being made in this repo. Nothing renders differently yet.
+
+**Score:** 2
+
+#### What makes this deploy extra special
+
+This app now follows the same look as every other DKJ-Solutions app, and a styling fix to the shared house style lands once, in the brand book, instead of drifting into a local variant.
+
+**Score:** 2
+
+#### Pull Request
+
+Enable dkj-solutions: the house style comes from dkj-brandbook
+
+[PR #177](https://github.com/DKJ-Solutions/djcylow-react/pull/177)
+
+---
 
 ### DEPLOY: data/tracklist-green-light-f-20260726 · 20260930-214053Z
 
