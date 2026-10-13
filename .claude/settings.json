@@ -97,6 +97,7 @@
     }
   },
   "enabledPlugins": {
+    "dkj-solutions@dkj-claude-plugins": true,
     "dkj-policy@dkj-claude-plugins": true,
     "dkj-subagents-alpha@dkj-claude-plugins": true,
     "figma@claude-plugins-official": true
